@@ -242,15 +242,15 @@
             </div>
             <div class="c-form">
                 <form action="https://formspree.io/f/xaqlrabo" method="POST">
+                    <input type="hidden" name="_next" value="https://infobierbank1.github.io/bierbank1/thanks.html">
+                    <input type="hidden" name="_language" value="de">
                     <input type="text" name="name" placeholder="Name / Veranstaltung" required>
                     <input type="email" name="email" placeholder="E-Mail-Adresse" required>
                     <textarea name="message" rows="5" placeholder="Ihre Nachricht" required></textarea>
-                    
                     <div class="privacy-box">
                         <input type="checkbox" id="privacy" required>
                         <label for="privacy">Ich habe die <span onclick="showLegal('datenschutz')" style="color:var(--gold); cursor:pointer; text-decoration: underline;">Datenschutzerklärung</span> zur Kenntnis genommen.</label>
                     </div>
-
                     <button type="submit" class="btn-main" style="width: 100%;">Absenden</button>
                 </form>
             </div>
