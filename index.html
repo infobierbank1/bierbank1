@@ -9,127 +9,188 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        :root {
-            --gold: #D4AF37;
-            --dark-bg: #0b0b0b;
-            --card-bg: #161616;
-            --light-text: #f0f0f0;
-            --gray-text: #b0b0b0;
+    :root {
+        --gold: #D4AF37;
+        --dark-bg: #0b0b0b;
+        --card-bg: #161616;
+        --light-text: #f0f0f0;
+        --gray-text: #b0b0b0;
+    }
+
+    body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        margin: 0;
+        background-color: var(--dark-bg);
+        color: var(--light-text);
+        scroll-behavior: smooth;
+        line-height: 1.7;
+        /* Додаємо відступ зверху, щоб фіксована шапка не закривала контент */
+        padding-top: 70px; 
+    }
+
+    /* --- Оновлений Header (Фіксований) --- */
+    header {
+        background: rgba(0, 0, 0, 0.95);
+        border-bottom: 2px solid var(--gold);
+        padding: 10px 5%;
+        position: fixed;
+        width: 100%; /* Змінено з 90% для правильної фіксації */
+        top: 0;
+        left: 0;
+        z-index: 10000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .logo-box img { height: 55px; width: auto; vertical-align: middle; }
+
+    /* --- Кнопка Бургер --- */
+    .menu-toggle {
+        display: none; /* Сховано на комп'ютері */
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 10001;
+    }
+
+    .menu-toggle span {
+        width: 30px;
+        height: 3px;
+        background-color: var(--gold);
+        transition: 0.3s;
+    }
+
+    /* --- Навігація --- */
+    .nav-container { display: flex; align-items: center; }
+    nav a { 
+        color: white; 
+        text-decoration: none; 
+        font-weight: 600; 
+        font-size: 0.85rem; 
+        text-transform: uppercase; 
+        margin-left: 20px; 
+        transition: 0.3s; 
+        cursor: pointer; 
+    }
+    nav a:hover { color: var(--gold); }
+
+    /* --- Мобільна адаптація меню --- */
+    @media (max-width: 900px) {
+        .menu-toggle {
+            display: flex; /* Показуємо бургер */
         }
 
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            margin: 0;
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-            scroll-behavior: smooth;
-            line-height: 1.7;
-        }
-
-        /* --- Header --- */
-        header {
-            background: rgba(0, 0, 0, 0.95);
+        .nav-container {
+            display: none; /* Ховаємо меню */
+            position: absolute;
+            top: 100%; /* Одразу під шапкою */
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.98);
             border-bottom: 2px solid var(--gold);
-            padding: 10px 5%;
-            position: fixed;
-            width: 90%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 20px 0;
         }
 
-        .logo-box img { height: 55px; width: auto; vertical-align: middle; }
+        .nav-container.active {
+            display: block; /* Показуємо при кліку */
+        }
 
-        .nav-container { display: flex; align-items: center; gap: 20px; }
-        nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; margin-left: 20px; transition: 0.3s; cursor: pointer; }
-        nav a:hover { color: var(--gold); }
-
-        /* --- Hero --- */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), 
-                        url('img/fest2.avif') center/cover;
+        nav {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 0 20px;
         }
-        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); color: var(--gold); margin: 0; text-transform: uppercase; letter-spacing: 2px; }
-        .hero h2 { font-size: 1.8rem; color: #fff; margin: 10px 0; font-weight: 300; }
-        .hero .hero-desc { font-size: 1.2rem; margin: 15px 0; color: var(--light-text); }
-        
-        .btn-main { background: var(--gold); color: black; padding: 15px 45px; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.3s; text-decoration: none; display: inline-block; text-align: center;}
-        .btn-main:hover { background: #fff; transform: scale(1.05); }
 
-        .btn-toggle { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 10px 25px; cursor: pointer; font-weight: bold; transition: 0.3s; margin-top: 20px; text-transform: uppercase; }
-        .btn-toggle:hover { background: var(--gold); color: black; }
-
-        /* --- Collapsible Content --- */
-        #details-content { display: none; }
-
-        /* --- Sections --- */
-        section { padding: 100px 10% 80px; }
-        h2 { text-align: center; color: var(--gold); font-size: 2.8rem; margin-bottom: 50px; text-transform: uppercase; border-bottom: 2px solid var(--gold); display: block; width: fit-content; margin: 0 auto 50px; padding-bottom: 10px; }
-        
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .grid-2 img { width: 100%; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .card { background: var(--card-bg); padding: 40px; border-radius: 12px; transition: 0.4s; position: relative; overflow: hidden; }
-        .card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
-        .card:hover { transform: translateY(-10px); background: #222; }
-        .card i { font-size: 2.8rem; color: var(--gold); margin-bottom: 20px; display: block; }
-
-        /* --- Slider --- */
-        .slider-container { position: relative; max-width: 1000px; margin: 0 auto; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .slider { display: flex; transition: transform 0.8s ease-in-out; }
-        .slide { min-width: 100%; height: 500px; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; }
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(212, 175, 55, 0.7); border: none; padding: 15px; cursor: pointer; color: black; z-index: 10; border-radius: 5px; }
-        .prev { left: 15px; } .next { right: 15px; }
-        .dots-container { text-align: center; padding: 15px; background: #0b0b0b; }
-        .dot { height: 10px; width: 10px; margin: 0 5px; background: #444; border-radius: 50%; display: inline-block; cursor: pointer; }
-        .dot.active { background: var(--gold); }
-
-        /* --- Contact --- */
-        .contact-container { display: grid; grid-template-columns: 1fr 1.5fr; background: var(--card-bg); border-radius: 15px; overflow: hidden; margin-top: 50px; }
-        .c-info { background: var(--gold); color: #000; padding: 60px; }
-        .c-info h3 { font-size: 2rem; margin-top: 0; }
-        .c-form { padding: 60px; }
-        
-        input, textarea { 
-            width: 100%; padding: 15px; margin-bottom: 20px; 
-            background: #252525; border: 1px solid #444; 
-            color: white; border-radius: 5px; box-sizing: border-box; 
-            font-size: 1rem;
+        nav a {
+            margin: 15px 0;
+            font-size: 1.1rem;
         }
-        input:focus, textarea:focus { border-color: var(--gold); outline: none; }
 
-        /* Privacy Checkbox */
-        .privacy-box { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; font-size: 0.9rem; }
-        .privacy-box input { width: auto; margin-top: 5px; }
-        .privacy-box a { color: var(--gold); text-decoration: underline; cursor: pointer; }
-
-        footer { text-align: center; padding: 50px; background: #000; border-top: 1px solid #222; font-size: 0.9rem; color: #777; }
-        .legal-links { margin-top: 20px; }
-        .legal-links span { color: var(--gold); text-decoration: none; margin: 0 15px; cursor: pointer; }
-
-        /* Modal Styles for Legal Texts */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
-        .modal-content { background: #1a1a1a; margin: 5% auto; padding: 40px; width: 80%; max-width: 800px; border-radius: 10px; border: 1px solid var(--gold); color: #ccc; }
-        .close-modal { color: var(--gold); float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-
-        @media (max-width: 900px) {
-            .grid-2, .contact-container { grid-template-columns: 1fr; }
-            .slide { height: 300px; }
-            header { width: 100%; padding: 10px 20px; left: 0; box-sizing: border-box; }
-            nav { display: none; }
+        /* Зменшення відступів між блоками на мобільних */
+        section {
+            padding: 50px 5% 40px !important;
         }
-    </style>
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .grid-2, .contact-container { grid-template-columns: 1fr; gap: 30px; }
+    }
+
+    /* --- Решта ваших стилів (Hero, Slider, Card тощо) --- */
+    .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), 
+                    url('img/fest2.avif') center/cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+    }
+    .hero h1 { font-size: clamp(3rem, 10vw, 6rem); color: var(--gold); margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+    .hero h2 { font-size: 1.8rem; color: #fff; margin: 10px 0; font-weight: 300; }
+    .hero .hero-desc { font-size: 1.2rem; margin: 15px 0; color: var(--light-text); }
+    
+    .btn-main { background: var(--gold); color: black; padding: 15px 45px; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.3s; text-decoration: none; display: inline-block; text-align: center;}
+    .btn-main:hover { background: #fff; transform: scale(1.05); }
+
+    .btn-toggle { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 10px 25px; cursor: pointer; font-weight: bold; transition: 0.3s; margin-top: 20px; text-transform: uppercase; }
+    .btn-toggle:hover { background: var(--gold); color: black; }
+
+    #details-content { display: none; }
+
+    section { padding: 100px 10% 80px; }
+    h2 { text-align: center; color: var(--gold); font-size: 2.8rem; margin-bottom: 50px; text-transform: uppercase; border-bottom: 2px solid var(--gold); display: block; width: fit-content; margin: 0 auto 50px; padding-bottom: 10px; }
+    
+    .grid-2 img { width: 100%; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+    .card { background: var(--card-bg); padding: 40px; border-radius: 12px; transition: 0.4s; position: relative; overflow: hidden; }
+    .card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
+    .card:hover { transform: translateY(-10px); background: #222; }
+    .card i { font-size: 2.8rem; color: var(--gold); margin-bottom: 20px; display: block; }
+
+    .slider-container { position: relative; max-width: 1000px; margin: 0 auto; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .slider { display: flex; transition: transform 0.8s ease-in-out; }
+    .slide { min-width: 100%; height: 500px; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; }
+    .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(212, 175, 55, 0.7); border: none; padding: 15px; cursor: pointer; color: black; z-index: 10; border-radius: 5px; }
+    .prev { left: 15px; } .next { right: 15px; }
+    .dots-container { text-align: center; padding: 15px; background: #0b0b0b; }
+    .dot { height: 10px; width: 10px; margin: 0 5px; background: #444; border-radius: 50%; display: inline-block; cursor: pointer; }
+    .dot.active { background: var(--gold); }
+
+    .contact-container { display: grid; grid-template-columns: 1fr 1.5fr; background: var(--card-bg); border-radius: 15px; overflow: hidden; margin-top: 50px; }
+    .c-info { background: var(--gold); color: #000; padding: 60px; }
+    .c-info h3 { font-size: 2rem; margin-top: 0; }
+    .c-form { padding: 60px; }
+    
+    input, textarea { 
+        width: 100%; padding: 15px; margin-bottom: 20px; 
+        background: #252525; border: 1px solid #444; 
+        color: white; border-radius: 5px; box-sizing: border-box; 
+        font-size: 1rem;
+    }
+    input:focus, textarea:focus { border-color: var(--gold); outline: none; }
+
+    .privacy-box { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; font-size: 0.9rem; }
+    .privacy-box input { width: auto; margin-top: 5px; }
+    .privacy-box a { color: var(--gold); text-decoration: underline; cursor: pointer; }
+
+    footer { text-align: center; padding: 50px; background: #000; border-top: 1px solid #222; font-size: 0.9rem; color: #777; }
+    .legal-links { margin-top: 20px; }
+    .legal-links span { color: var(--gold); text-decoration: none; margin: 0 15px; cursor: pointer; }
+
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
+    .modal-content { background: #1a1a1a; margin: 5% auto; padding: 40px; width: 80%; max-width: 800px; border-radius: 10px; border: 1px solid var(--gold); color: #ccc; }
+    .close-modal { color: var(--gold); float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+</style>
 </head>
 <body>
 
