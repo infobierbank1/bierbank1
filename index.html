@@ -134,14 +134,28 @@
 <body>
 
     <header>
+        <a href="#" class="logo-box">
+            <img src="img/logo.png" alt="Bierbank №1">
+        </a>
+
+        <div class="menu-toggle" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-container" id="mobile-nav">
+            <nav>
+                <a onclick="navToMobile('about')">Über uns</a>
+                <a onclick="navToMobile('benefits-org')">Vorteile</a>
+                <a onclick="navToMobile('gallery')">Galerie</a>
+                <a onclick="navToMobile('contact')">Kontakt</a>
+            </nav>
+
+        
         <a href="#" class="logo-box"><img src="img/logo.png" alt="Bierbank №1"></a>
         <div class="nav-container">
             <nav>
-                <a onclick="navTo('about')">Über uns</a>
-                <a onclick="navTo('benefits-org')">Vorteile </a>
-                <a onclick="navTo('gallery')">Galerie</a>
-                <a onclick="navTo('contact')">Kontakt</a>
-            </nav>
         </div>
     </header>
 
