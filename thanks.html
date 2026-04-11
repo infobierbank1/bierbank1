@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vielen Dank | Bierbank №1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #d4af37;
-            --black: #1a1a1a;
+            --black: #000000;
+            --dark-grey: #1a1a1a;
             --white: #ffffff;
+            --font-oswald: 'Oswald', sans-serif;
+            --font-roboto: 'Roboto', sans-serif;
         }
         body {
             background-color: var(--black);
             color: var(--white);
-            font-family: 'Arial', sans-serif;
+            font-family: var(--font-roboto);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,42 +26,54 @@
             text-align: center;
         }
         .thanks-container {
-            padding: 40px;
-            border: 1px solid var(--gold);
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            padding: 50px;
+            background-color: var(--dark-grey); /* Темно-сірий фон, як на сайті */
+            border: 1px solid var(--gold); /* Золота рамка */
+            border-radius: 8px;
             max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         h1 {
             color: var(--gold);
-            font-size: 2.5rem;
+            font-family: var(--font-oswald); /* Шрифт для заголовка */
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 3rem;
             margin-bottom: 20px;
         }
         p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             line-height: 1.6;
-            margin-bottom: 30px;
+            font-weight: 300;
+            margin-bottom: 40px;
         }
         .btn-back {
             display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--gold);
+            padding: 15px 40px;
+            background-color: var(--gold); /* Золота кнопка */
             color: var(--black);
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: 0.3s;
+            font-family: var(--font-oswald);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
         .btn-back:hover {
-            background-color: var(--white);
-            transform: scale(1.05);
+            background-color: var(--white); /* Кнопка стає білою при наведенні */
+            color: var(--black);
+            transform: translateY(-2px); /* Маленький ефект підняття */
         }
     </style>
 </head>
 <body>
     <div class="thanks-container">
         <h1>Vielen Dank!</h1>
-        <p>Ihre Nachricht wurde erfolgreich gesendet. <br> Wir werden uns so schnell wie möglich bei Ihnen melden.</p>
+        <p>Ihre Nachricht wurde erfolgreich gesendet. <br> Мы werden uns so schnell wie möglich bei Ihnen melden.</p>
         <a href="index.html" class="btn-back">Zurück zur Startseite</a>
     </div>
 </body>
