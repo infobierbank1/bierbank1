@@ -34,7 +34,7 @@
             position: fixed;
             width: 90%;
             top: 0;
-            z-index: 1000;
+            z-index: 9999;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -43,7 +43,35 @@
         .logo-box img { height: 55px; width: auto; vertical-align: middle; }
 
         .nav-container { display: flex; align-items: center; gap: 20px; }
-        nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; margin-left: 20px; transition: 0.3s; cursor: pointer; }
+        
+        /* Burger Menu Icon */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 10000;
+            padding: 5px;
+        }
+        .burger-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--gold);
+            transition: 0.3s;
+        }
+
+        nav { display: flex; align-items: center; }
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            margin-left: 20px; 
+            transition: 0.3s; 
+            cursor: pointer; 
+        }
         nav a:hover { color: var(--gold); }
 
         /* --- Hero --- */
@@ -62,10 +90,18 @@
         .hero h2 { font-size: 1.8rem; color: #fff; margin: 10px 0; font-weight: 300; }
         .hero .hero-desc { font-size: 1.2rem; margin: 15px 0; color: var(--light-text); }
         
-        .btn-main { background: var(--gold); color: black; padding: 15px 45px; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.3s; text-decoration: none; display: inline-block; text-align: center;}
+        .btn-main { 
+            background: var(--gold); color: black; padding: 15px 45px; border: none; 
+            font-weight: 900; cursor: pointer; text-transform: uppercase; 
+            transition: 0.3s; text-decoration: none; display: inline-block; text-align: center;
+        }
         .btn-main:hover { background: #fff; transform: scale(1.05); }
 
-        .btn-toggle { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 10px 25px; cursor: pointer; font-weight: bold; transition: 0.3s; margin-top: 20px; text-transform: uppercase; }
+        .btn-toggle { 
+            background: transparent; color: var(--gold); border: 1px solid var(--gold); 
+            padding: 10px 25px; cursor: pointer; font-weight: bold; transition: 0.3s; 
+            margin-top: 20px; text-transform: uppercase; 
+        }
         .btn-toggle:hover { background: var(--gold); color: black; }
 
         /* --- Collapsible Content --- */
@@ -73,13 +109,20 @@
 
         /* --- Sections --- */
         section { padding: 100px 10% 80px; }
-        h2 { text-align: center; color: var(--gold); font-size: 2.8rem; margin-bottom: 50px; text-transform: uppercase; border-bottom: 2px solid var(--gold); display: block; width: fit-content; margin: 0 auto 50px; padding-bottom: 10px; }
+        h2 { 
+            text-align: center; color: var(--gold); font-size: 2.8rem; margin-bottom: 50px; 
+            text-transform: uppercase; border-bottom: 2px solid var(--gold); 
+            display: block; width: fit-content; margin: 0 auto 50px; padding-bottom: 10px; 
+        }
         
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .grid-2 img { width: 100%; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
 
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .card { background: var(--card-bg); padding: 40px; border-radius: 12px; transition: 0.4s; position: relative; overflow: hidden; }
+        .card { 
+            background: var(--card-bg); padding: 40px; border-radius: 12px; transition: 0.4s; 
+            position: relative; overflow: hidden; 
+        }
         .card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
         .card:hover { transform: translateY(-10px); background: #222; }
         .card i { font-size: 2.8rem; color: var(--gold); margin-bottom: 20px; display: block; }
@@ -109,7 +152,6 @@
         }
         input:focus, textarea:focus { border-color: var(--gold); outline: none; }
 
-        /* Privacy Checkbox */
         .privacy-box { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px; font-size: 0.9rem; }
         .privacy-box input { width: auto; margin-top: 5px; }
         .privacy-box a { color: var(--gold); text-decoration: underline; cursor: pointer; }
@@ -118,16 +160,30 @@
         .legal-links { margin-top: 20px; }
         .legal-links span { color: var(--gold); text-decoration: none; margin: 0 15px; cursor: pointer; }
 
-        /* Modal Styles for Legal Texts */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
+        .modal { display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
         .modal-content { background: #1a1a1a; margin: 5% auto; padding: 40px; width: 80%; max-width: 800px; border-radius: 10px; border: 1px solid var(--gold); color: #ccc; }
         .close-modal { color: var(--gold); float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
 
+        /* --- Mobile Responsive Logic --- */
         @media (max-width: 900px) {
+            header { width: 100%; left: 0; padding: 10px 20px; box-sizing: border-box; }
+            .burger-menu { display: flex; }
+            nav {
+                display: none; /* Сховано за замовчуванням */
+                flex-direction: column;
+                position: absolute;
+                top: 75px; left: 0; width: 100%;
+                background: rgba(0, 0, 0, 0.98);
+                padding: 20px 0;
+                border-bottom: 2px solid var(--gold);
+                text-align: center;
+            }
+            /* Клас для відкриття через JS */
+            nav.is-open { display: flex !important; }
+            
+            nav a { margin: 15px 0; font-size: 1.1rem; display: block; margin-left: 0; }
             .grid-2, .contact-container { grid-template-columns: 1fr; }
             .slide { height: 300px; }
-            header { width: 100%; padding: 10px 20px; left: 0; box-sizing: border-box; }
-            nav { display: none; }
         }
     </style>
 </head>
@@ -136,9 +192,12 @@
     <header>
         <a href="#" class="logo-box"><img src="img/logo.png" alt="Bierbank №1"></a>
         <div class="nav-container">
-            <nav>
+            <div class="burger-menu" id="burgerToggle">
+                <span></span><span></span><span></span>
+            </div>
+            <nav id="mainNav">
                 <a onclick="navTo('about')">Über uns</a>
-                <a onclick="navTo('benefits-org')">Vorteile </a>
+                <a onclick="navTo('benefits-org')">Vorteile</a>
                 <a onclick="navTo('gallery')">Galerie</a>
                 <a onclick="navTo('contact')">Kontakt</a>
             </nav>
@@ -150,7 +209,7 @@
         <h2>Zuverlässiger Partner in der Bierversorgung für Festivals</h2>
         <div class="hero-desc">Schnelle und sichere Versorgung mit gekühlten Getränken.</div>
         <a href="#contact" class="btn-main">Anfrage</a>
-        <button class="btn-toggle" id="toggleDetailsTop" onclick="toggleContent()">Mehr Details anzeigen</button>
+        <button class="btn-toggle" id="btnToggleMain" onclick="toggleDetails()">Mehr Details anzeigen</button>
     </section>
 
     <div id="details-content">
@@ -164,47 +223,42 @@
                     <p>Das Team von Bierbank №1 legt besonderes Augenmerk auf die Planung und Organisation der Produktlieferung. Wir helfen den Organisatoren, die benötigten Biermengen korrekt zu berechnen, die Lieferung an den Standort zu organisieren und eine stabile Verfügbarkeit der Getränke während der gesamten Veranstaltung sicherzustellen.</p>
                     <p>Unser Ansatz basiert auf drei Grundprinzipien: Zuverlässigkeit, Geschwindigkeit und Qualität. Wir streben danach, effiziente Lösungen für Großveranstaltungen zu schaffen, damit sich die Organisatoren auf die Atmosphäre des Events konzentrieren können und die Gäste ihre Freizeit genießen.</p>
                     <p>Bierbank №1 — das ist ein moderner Ansatz zur Organisation des Bierverkaufs bei Festivals und Großveranstaltungen.</p>
-                 </div>
+                </div>
                 <img src="img/logo.png" alt="Bierbank №1 Team"> 
             </div>
         </section>
 
-          <section id="benefits-org">
-        <h2 data-key="org-title">Vorteile für die Organisatoren</h2>
-        <div class="feature-grid">
-            <div class="card">
-                <i class="fas fa-users"></i>
-                <h3 data-key="o1-t">Schnelle Bedienung großer Gästeschwärme</h3>
-                <p data-key="o1-d">Das Bierformat in Flaschen ermöglicht es, den Getränkeverkauf auch bei Veranstaltungen mit einer großen Anzahl von Besuchern erheblich zu beschleunigen.</p>
+        <section id="benefits-org">
+            <h2>Vorteile für die Organisatoren</h2>
+            <div class="feature-grid">
+                <div class="card">
+                    <i class="fas fa-users"></i>
+                    <h3>Schnelle Bedienung großer Gästeschwärme</h3>
+                    <p>Das Bierformat in Flaschen ermöglicht es, den Getränkeverkauf auch bei Veranstaltungen mit einer großen Anzahl von Besuchern erheblich zu beschleunigen.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Geringere Belastung der Infrastruktur</h3>
+                    <p>Dieses Format benötigt keine komplexen Schankanlagen und keine großen Mengen an Ausrüstung.</p>
+                </div>
             </div>
-            <div class="card">
-                <i class="fas fa-cogs"></i>
-                <h3 data-key="o2-t">Geringere Belastung der Infrastruktur</h3>
-                <p data-key="o2-d">Dieses Format benötigt keine komplexen Schankanlagen und keine großen Mengen an Ausrüstung.</p>
-            </div>
-                        
-        </div>
-        
-    </section>
+        </section>
 
         <section id="benefits-guests" style="background: #111;">
-        <h2 data-key="guest-title">Vorteile für die Gäste</h2>
-        <div class="feature-grid">
-            <div class="card">
-                <i class="fas fa-beer"></i>
-                <h3 data-key="g1-t">Frische und intensiver Geschmack</h3>
-                <p data-key="g1-d">Fassbier hat einen ausgeprägteren Geschmack und wird frisch serviert, was den Eindruck des Getränks während der Veranstaltung erheblich verbessert.</p>
+            <h2>Vorteile für die Gäste</h2>
+            <div class="feature-grid">
+                <div class="card">
+                    <i class="fas fa-beer"></i>
+                    <h3>Frische und intensiver Geschmack</h3>
+                    <p>Fassbier hat einen ausgeprägteren Geschmack und wird frisch serviert, was den Eindruck des Getränks während der Veranstaltung erheblich verbessert.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-walking"></i>
+                    <h3>Einfachkeit während des Events</h3>
+                    <p>Die Flasche ist leicht in der Hand zu halten und mitzunehmen, während man sich auf dem Gelände des Festivals bewegt.</p>
+                </div>
             </div>
-           
-            <div class="card">
-                <i class="fas fa-walking"></i>
-                <h3 data-key="g3-t">Einfachkeit während des Events</h3>
-                <p data-key="g3-d">Die Flasche ist leicht in der Hand zu halten und mitzunehmen, oder im praktischen Flaschenträger während man sich auf dem Gelände des Festivals oder Konzerts bewegt.</p>
-            </div>
-            
-        </div>
-    </section>
-
+        </section>
 
         <section id="gallery">
             <h2>Galerie</h2>
@@ -219,7 +273,7 @@
                 <div class="dots-container" id="dotsContainer"></div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
-                <button class="btn-toggle" onclick="toggleContent()">Weniger Details anzeigen</button>
+                <button class="btn-toggle" onclick="toggleDetails()">Weniger anzeigen</button>
             </div>
         </section>
     </div>
@@ -232,7 +286,7 @@
                 <p><i class="fas fa-map-marker-alt"></i> Wiesenweg 4, 19372 Groß Godems</p>
                 <p><i class="fas fa-phone"></i> +49 1515 3796898</p>
                 <p><i class="fas fa-envelope"></i> info.bierbank1@gmail.com</p>
-                <p>Partner E-mail:</p>
+                <p>Partner E-Mail:</p>
                 <p><i class="fas fa-envelope"></i> bierbank8@gmail.com</p>
                 
                 <div style="margin-top: 20px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px;">
@@ -242,8 +296,6 @@
             </div>
             <div class="c-form">
                 <form action="https://formspree.io/f/xaqlrabo" method="POST">
-                    <input type="hidden" name="_next" value="https://infobierbank1.github.io/bierbank1/thanks.html">
-                    <input type="hidden" name="_language" value="de">
                     <input type="text" name="name" placeholder="Name / Veranstaltung" required>
                     <input type="email" name="email" placeholder="E-Mail-Adresse" required>
                     <textarea name="message" rows="5" placeholder="Ihre Nachricht" required></textarea>
@@ -273,68 +325,84 @@
     </div>
 
     <script>
-        function navTo(sectionId) {
-            const content = document.getElementById('details-content');
-            if (sectionId !== 'contact' && content.style.display !== "block") {
-                toggleContent();
-            }
-            setTimeout(() => {
-                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        }
+        
+        // 1. Пряме керування бургером
+        const burgerBtn = document.getElementById('burgerToggle');
+        const nav = document.getElementById('mainNav');
 
-        function toggleContent() {
+        burgerBtn.addEventListener('click', function() {
+            nav.classList.toggle('is-open');
+        });
+
+        // 2. Функція відкриття/закриття "Mehr Details"
+        function toggleDetails() {
             const content = document.getElementById('details-content');
-            const btnTop = document.getElementById('toggleDetailsTop');
-            if (content.style.display === "block") {
-                content.style.display = "none";
-                btnTop.innerText = "Mehr Details anzeigen";
-            } else {
+            const btn = document.getElementById('btnToggleMain');
+            
+            if (window.getComputedStyle(content).display === "none") {
                 content.style.display = "block";
-                btnTop.innerText = "Weniger anzeigen";
+                if(btn) btn.innerText = "Weniger anzeigen";
+            } else {
+                content.style.display = "none";
+                if(btn) btn.innerText = "Mehr Details anzeigen";
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
 
-        // Legal Modal Logic
+        // 3. Навігація
+        function navTo(id) {
+            const content = document.getElementById('details-content');
+            
+            // Закрити бургер
+            nav.classList.remove('is-open');
+
+            // Відкрити блок, якщо закритий
+            if (id !== 'contact' && window.getComputedStyle(content).display === "none") {
+                toggleDetails();
+            }
+
+            // Плавний скрол
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                    const offset = 80;
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = element.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            }, 250);
+        }
+
+        // 4. Юридичні модалки
         function showLegal(type) {
             const modal = document.getElementById('legalModal');
             const text = document.getElementById('legalText');
             if(type === 'impressum') {
-                text.innerHTML = `<h2>Impressum</h2><p><strong>Angaben gemäß § 5 TMG:</strong><br>Natalia Savenkova<br>Bierbank №1<br>Wiesenweg 4<br>19372 Groß Godems</p><p><strong>Kontakt:</strong><br>Telefon: +49 1515 3796898<br>E-Mail: info.bierbank1@gmail.com<br>Partner E-Mail: bierbank8@gmail.com <p><strong>Steuernummer:</strong><br>090/265/06090</p>`;
+                text.innerHTML = `<h2>Impressum</h2><p><strong>Angaben gemäß § 5 TMG:</strong><br>Natalia Savenkova<br>Bierbank №1<br>Wiesenweg 4<br>19372 Groß Godems</p><p><strong>Kontakt:</strong><br>Telefon: +49 1515 3796898<br>E-Mail: info.bierbank1@gmail.com</p><p><strong>Steuernummer:</strong><br>090/265/06090</p>`;
             } else {
-                text.innerHTML = `<h2>Datenschutzerklärung</h2><p>Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften (DSGVO).</p><h3>Datenerfassung</h3><p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage gespeichert.</p><h3>Hosting</h3><p>Diese Seite wird auf GitHub Pages gehostet. GitHub erhebt Log-Files (IP-Adresse, Browsertyp).</p>`;
+                text.innerHTML = `<h2>Datenschutzerklärung</h2><p>Wir behandeln Ihre personenbezogenen Daten vertraulich gemäß DSGVO.</p>`;
             }
             modal.style.display = "block";
         }
+        function closeModal() { document.getElementById('legalModal').style.display = "none"; }
 
-        function closeModal() {
-            document.getElementById('legalModal').style.display = "none";
-        }
-
-        // Slider Logic
+        // 5. Слайдер
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slide');
-        const sliderRow = document.getElementById('mainSlider');
-        const dotsBox = document.getElementById('dotsContainer');
-
-        slides.forEach((_, i) => {
-            const dot = document.createElement('span');
-            dot.className = 'dot' + (i === 0 ? ' active' : '');
-            dot.onclick = () => showSlide(i);
-            dotsBox.appendChild(dot);
-        });
-
         function showSlide(n) {
             slideIndex = n;
             if (slideIndex >= slides.length) slideIndex = 0;
             if (slideIndex < 0) slideIndex = slides.length - 1;
-            sliderRow.style.transform = `translateX(-${slideIndex * 100}%)`;
-            document.querySelectorAll('.dot').forEach((d, i) => {
-                d.className = i === slideIndex ? 'dot active' : 'dot';
-            });
+            document.getElementById('mainSlider').style.transform = `translateX(-${slideIndex * 100}%)`;
         }
         function moveSlide(n) { showSlide(slideIndex + n); }
-        setInterval(() => moveSlide(1), 6000);
+        setInterval(() => moveSlide(1), 5000);
     </script>
 </body>
 </html>
